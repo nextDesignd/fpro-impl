@@ -12,4 +12,8 @@
 #define io_write(base, offset, data) \
     (*( ( volatile uint32_t *) ((base) + (offset))) = (data))
 
+#define bit_write(data, bit_pos, bit_value) \
+    if((bit_value)) (data) |= (1UL << (bit_pos)); \
+    else            (data) &= ~(1UL << (bit_pos))
+
 #endif
