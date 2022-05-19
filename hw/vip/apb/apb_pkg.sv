@@ -1,3 +1,5 @@
+`include "apb_if.sv"
+
 package apb_pkg;
 
     import uvm_pkg::*;
@@ -11,4 +13,3 @@ package apb_pkg;
 
 endpackage
 
-`include "apb_if.sv"
