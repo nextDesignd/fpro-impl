@@ -6,6 +6,6 @@ package test_pkg;
     import env_pkg::*;
 
     `include "test_base.svh"
-
+    `include "basic_read_write_test.svh"
 
 endpackage

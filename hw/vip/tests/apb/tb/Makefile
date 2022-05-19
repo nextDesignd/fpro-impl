@@ -22,4 +22,4 @@ tb:
 		 $(TEST_DIR)/apb/tb/top.sv 
 
 sim:
-	vsim -c work.top -do "run -a; q" +UVM_TESTNAME=test_base
+	vsim -c work.top -do "run -a; q" +UVM_TESTNAME=basic_read_write_test

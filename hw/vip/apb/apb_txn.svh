@@ -1,5 +1,5 @@
 
-class apb_txn extends uvm_object;
+class apb_txn extends uvm_sequence_item;
     `uvm_object_utils(apb_txn);
 
     bit [31:0] addr;
