@@ -23,3 +23,6 @@ tb:
 
 sim:
 	vsim -c work.top -do "run -a; q" +UVM_TESTNAME=basic_read_write_test
+
+sim_waves:
+	vsim work.top +UVM_TESTNAME=basic_read_write_test

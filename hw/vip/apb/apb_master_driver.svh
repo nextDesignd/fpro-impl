@@ -52,6 +52,8 @@ class apb_master_driver extends uvm_driver #(apb_txn);
                 if(vif.pready) begin
                     txn.slverr = vif.pslverr;
                     if(!vif.pwrite) txn.data = vif.prdata;
+                    vif.penable <= 1'b0;
+                    vif.psel    <= 1'b0;
                     break;
                 end
             end
