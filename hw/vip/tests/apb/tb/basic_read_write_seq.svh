@@ -10,6 +10,11 @@ class basic_read_write_seq extends apb_base_seq;
         `uvm_info("BASIC_READ_WRITE_SEQ", $psprintf("data = %h", data), UVM_MEDIUM);
 
         write32('h2, 'h22);
+        #1;
+        read32('h2, data);
+        #5;
+        read32('h2, data);
+        #54;
         read32('h2, data);
         `uvm_info("BASIC_READ_WRITE_SEQ", $psprintf("data = %h", data), UVM_MEDIUM);
 
