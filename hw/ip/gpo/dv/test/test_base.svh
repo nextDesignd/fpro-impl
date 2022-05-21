@@ -14,9 +14,10 @@ class test_base extends uvm_test;
         super.build_phase(phase);
         
         env_instance = env::type_id::create("env_instance", this);
-        uvm_config_db#(virtual apb_if)::get(this, "", "apb_master_if", vif);
-        if(vif == null)
+        if(!uvm_config_db#(virtual apb_if)::get(this, "", "apb_master_if", vif))
             `uvm_fatal("TEST_BASE", "Unable to get apb_master_if")
+        if(vif == null)
+            `uvm_fatal("TEST_BASE", "Invaid apb_master_if")
         env_instance.vif = vif;
 
     endfunction

@@ -55,7 +55,10 @@ class apb_master_driver extends uvm_driver #(apb_txn);
                 if(vif.pready) break;
 
             txn.slverr = vif.pslverr;
-            if(!vif.pwrite) txn.data = vif.prdata;
+            if(!vif.pwrite) begin
+                txn.data = vif.prdata;
+                $display($time, " UG_DEBUG data = %h", txn.data);
+            end
             vif.penable <= 1'b0;
 
             // TODO : This appears as a zero-time glitch on psel, fix it

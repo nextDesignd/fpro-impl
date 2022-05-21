@@ -26,7 +26,7 @@ module gpo
     assign wr_out_en = (paddr === 0) && psel && pwrite && penable;
 
     always @(posedge pclk)
-        if(presetn)
+        if(!presetn)
             out_buf <= '0;
         else if(wr_out_en)
             out_buf <= pwdata;

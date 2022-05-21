@@ -2,22 +2,53 @@
 class basic_read_write_seq extends apb_base_seq;
     `uvm_object_utils(basic_read_write_seq);
 
+    localparam PORT_WIDTH = 8;
+
+    enum bit [31:0] {
+        DATA_REG = 32'h0
+    } GPO_REG_OFFSET;
+
     task body();
-        bit [31:0] data;
 
-        write32('h1, 'h20);
-        read32('h1, data);
-        `uvm_info("BASIC_READ_WRITE_SEQ", $psprintf("data = %h", data), UVM_MEDIUM);
+        // b2b transfer, without delay
+        repeat(20) begin
+            bit [31:0] rdata, wdata;
 
-        write32('h2, 'h22);
-        #1;
-        read32('h2, data);
-        #5;
-        read32('h2, data);
-        #54;
-        read32('h2, data);
-        `uvm_info("BASIC_READ_WRITE_SEQ", $psprintf("data = %h", data), UVM_MEDIUM);
+            wdata = $urandom_range(0, (32'h1 << PORT_WIDTH));
 
+            write32(DATA_REG, wdata);
+            read32(DATA_REG,  rdata);
+            if( wdata != rdata ) 
+                `uvm_error("DATA_MISMATCH", {
+                    "wdata != rdata ",
+                    $psprintf("wdata = %h ", wdata),
+                    $psprintf("rdata = %h", rdata)
+                })
+
+        end
+
+        // b2b transfer, with delay
+        repeat(20) begin
+            bit [31:0] rdata, wdata;
+            int unsigned delay;
+
+            wdata = $urandom_range(0, (32'h1 << PORT_WIDTH));
+            delay = $urandom_range(0, 100);
+
+            #(delay);
+            write32(DATA_REG, wdata);
+            #(delay);
+            read32(DATA_REG,  rdata);
+            if( wdata != rdata ) 
+                `uvm_error("DATA_MISMATCH", {
+                    "wdata != rdata ",
+                    $psprintf("wdata = %h ", wdata),
+                    $psprintf("rdata = %h", rdata)
+                })
+
+        end
     endtask
 
 endclass
+
+

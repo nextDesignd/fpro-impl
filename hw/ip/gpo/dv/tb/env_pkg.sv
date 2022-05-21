@@ -5,7 +5,7 @@ package env_pkg;
 
     import apb_pkg::*;
 
+    `include "gpo_scoreboard.svh"
     `include "env.svh"
-    `include "basic_read_write_seq.svh"
 
 endpackage

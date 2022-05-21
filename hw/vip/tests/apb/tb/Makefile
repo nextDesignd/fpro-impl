@@ -8,7 +8,6 @@ TEST_DIR=$(VIP_DIR)/tests
 all: apb tb
 
 apb: 
-	echo $(VIP_DIR)
 	vlog $(VIP_DIR)/apb/apb_pkg.sv
 
 tb:
