@@ -1,9 +1,4 @@
 
-# Compile APB
-# Compile env
-# Compile test
-# Compile top
-
 # Expects FPRO_DIR to be defined
 
 VIP_DIR=$(FPRO_DIR)/hw/vip
