@@ -20,3 +20,6 @@ sim:
 
 sim_waves:
 	vsim work.top +UVM_TESTNAME=basic_read_write_test
+
+clean:
+	rm -rf work transcript work vsim.wlf
