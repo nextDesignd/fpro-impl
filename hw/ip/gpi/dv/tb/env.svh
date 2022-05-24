@@ -24,8 +24,7 @@ class env extends uvm_env;
 
     function void connect_phase(uvm_phase phase);
         super.connect_phase(phase);
-
-        // TODO: connect sbd to montior
+        master.monitor.apb_monitor_port.connect(sbd.apb_imp);
     endfunction
 
 endclass

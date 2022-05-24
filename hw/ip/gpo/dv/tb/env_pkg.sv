@@ -9,3 +9,5 @@ package env_pkg;
     `include "env.svh"
 
 endpackage
+
+`include "gpo_if.sv"

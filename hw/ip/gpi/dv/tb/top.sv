@@ -13,6 +13,8 @@ module top;
     logic  [PORT_WIDTH-1:0] in;
 
     apb_if apb_master_if();
+    
+    gpi_if gpi_if();
 
     gpi #(.WIDTH(PORT_WIDTH)) dut(
         .pclk(clk),
@@ -32,12 +34,22 @@ module top;
     assign apb_master_if.pclk = clk;
     assign apb_master_if.presetn = resetn;
 
+    assign gpi_if.in[PORT_WIDTH-1:0] = in;
+    assign gpi_if.clk = clk;
+
     initial begin
         uvm_config_db#(virtual apb_if)::set(
             uvm_top, 
             "*", 
             "apb_master_if", 
             apb_master_if
+       );
+
+        uvm_config_db#(virtual gpi_if)::set(
+            uvm_top, 
+            "*", 
+            "gpi_if", 
+            gpi_if
        );
 
        run_test();

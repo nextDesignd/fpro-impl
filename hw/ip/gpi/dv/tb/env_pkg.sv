@@ -9,3 +9,5 @@ package env_pkg;
     `include "env.svh"
 
 endpackage
+
+`include "gpi_if.sv"
