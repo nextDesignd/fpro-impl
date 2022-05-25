@@ -1,0 +1,15 @@
+{
+    "name" : "uart_regs",
+    "description" : "uart",
+    "registers" :
+    [
+        {
+            "name"   : "uartdr",
+            "offset" : 0,
+            "access_type" : "rw",
+            "fields" :
+            [
+                { 
+
+            
+
