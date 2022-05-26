@@ -4,7 +4,7 @@ interface apb_if();
 
     logic         psel;
     logic         penable;
-    logic [5:0]   paddr;
+    logic [31:0]   paddr;
     logic         pwrite;
     logic [31:0]  pwdata;
 
